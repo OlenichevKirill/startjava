@@ -4,16 +4,16 @@ public class MyFirstGame {
 		int userNumber = 14;
 
 		if(userNumber < number) {
-			while(userNumber!=number){
+			while(userNumber != number) {
 				System.out.println("Число " + userNumber +" меньше искомого числа");
 				userNumber++;
 			}
 		} else if(userNumber > number) {
-			while(userNumber!=number){
+			while(userNumber != number) {
 				System.out.println("Число " + userNumber +" больше искомого числа");
 				userNumber--;
 			}
-		} 
+		}
 		System.out.println("Вы угадали " + userNumber);
 	}
 }

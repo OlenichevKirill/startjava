@@ -1,5 +1,5 @@
 public class Variable {
-	public static void main (String[] args) {
+	public static void main(String[] args) {
 		byte core = 4;
 		short flow = 4;
 		int cpu = 6500;
