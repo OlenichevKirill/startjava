@@ -3,7 +3,6 @@ public class Calculator {
 	private int secondNumber = 3;
 	private char operation = '^';
 	private int res = 0;
-	private String check;
 
 	public void setFirstNumber(int firstNumber) {
 		this.firstNumber = firstNumber;
@@ -43,7 +42,7 @@ public class Calculator {
 				break;
 			default:
 				System.out.println("Введена не корректная операция");
-				this.operation = operation;
+				this.operation = ' ';
 				break;
 		}
 	}
@@ -52,16 +51,7 @@ public class Calculator {
 		return operation;
 	}
 
-	public void setCheck(String check) {
-		this.check = check;
-	}
-
-	public String getCheck() {
-		return check;
-	}
-
-
-	public void calculation() {
+	public void calculate() {
 		if (operation == '+') {
 			res = firstNumber + secondNumber;
 			System.out.println("Сумма чисел равно " + res);
@@ -83,8 +73,6 @@ public class Calculator {
 		} else if (operation == '%') {
 			res = firstNumber % secondNumber;
 			System.out.println("Остаток от деления чисел равно " + res);
-		} else {
-			System.out.println("Введенная операция не корректна. Не возможно получить результат.");
-		}
+		} 
 	}
 }
