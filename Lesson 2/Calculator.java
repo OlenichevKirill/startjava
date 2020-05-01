@@ -1,8 +1,8 @@
 public class Calculator {
-	private int firstNumber = 10;
-	private int secondNumber = 3;
-	private char operation = '^';
-	private int res = 0;
+	private int firstNumber;
+	private int secondNumber;
+	private char operation;
+	private int res;
 
 	public void setFirstNumber(int firstNumber) {
 		this.firstNumber = firstNumber;
@@ -21,30 +21,7 @@ public class Calculator {
 	}
 
 	public void setOperation(char operation) {
-		switch (operation) {
-			case '+': 
-				this.operation = operation;
-				break;
-			case '-': 
-				this.operation = operation;
-				break;
-			case '*': 
-				this.operation = operation;
-				break;
-			case '/': 
-				this.operation = operation;
-				break;
-			case '^': 
-				this.operation = operation;
-				break;
-			case '%': 
-				this.operation = operation;
-				break;
-			default:
-				System.out.println("Введена не корректная операция");
-				this.operation = ' ';
-				break;
-		}
+		this.operation = operation;
 	}
 
 	public char getOperation() {
@@ -52,27 +29,37 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		if (operation == '+') {
-			res = firstNumber + secondNumber;
-			System.out.println("Сумма чисел равно " + res);
-		} else if (operation == '-') {
-			res = firstNumber - secondNumber;
-			System.out.println("Разность чисел равно " + res);
-		} else if (operation == '*') {
-			res = firstNumber * secondNumber;
-			System.out.println("Перемножение чисел равно " + res);
-		} else if (operation == '/') {
-			res = firstNumber / secondNumber;
-			System.out.println("Деление чисел равно " + res);
-		} else if (operation == '^') {
-			res = firstNumber;
-			for (int i = 1; i < secondNumber; i++) {
-				res *= firstNumber;
-			}
-			System.out.println("Число " + firstNumber + " возведенное в степь " + secondNumber + " равно " + res);
-		} else if (operation == '%') {
-			res = firstNumber % secondNumber;
-			System.out.println("Остаток от деления чисел равно " + res);
-		} 
+		switch (operation) {
+			case '+':
+				res = firstNumber + secondNumber;
+				System.out.println("Сумма чисел равно " + res);
+				break;
+			case '-':
+				res = firstNumber - secondNumber;
+				System.out.println("Разность чисел равно " + res);
+				break;
+			case '*':
+				res = firstNumber * secondNumber;
+				System.out.println("Перемножение чисел равно " + res);
+				break;
+			case '/':
+				res = firstNumber / secondNumber;
+				System.out.println("Деление чисел равно " + res);
+				break;
+			case '^':
+				res = firstNumber;
+				for (int i = 1; i < secondNumber; i++) {
+					res *= firstNumber;
+				}
+				System.out.println("Число " + firstNumber + " возведенное в степь " + secondNumber + " равно " + res);
+				break;
+			case '%':
+				res = firstNumber % secondNumber;
+				System.out.println("Остаток от деления чисел равно " + res);
+				break;
+			default:
+				System.out.println("Введена не корректная операция");
+				break;
+		}
 	}
 }
