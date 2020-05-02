@@ -39,6 +39,4 @@ public class GuessNumberTest {
 			} while(!answerYesNo.equals("yes") && !answerYesNo.equals("no"));
 		} while(answerYesNo.equals("yes"));
 	}
-	
-
 }
