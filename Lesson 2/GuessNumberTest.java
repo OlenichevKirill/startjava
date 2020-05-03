@@ -19,17 +19,15 @@ public class GuessNumberTest {
 		do {
 			System.out.println("Игрок " + playerOne.getName() + " вводит число: ");
 			playerOne.setNumber(scan.nextInt());
-			guessNumber.checkNumber(guessNumber.getCompNumber(), playerOne.getNumber());
+			guessNumber.checkNumber(guessNumber.getCompNumber(), playerOne.getNumber(), playerOne.getName());
 			if(guessNumber.getCompNumber() == playerOne.getNumber()) {
-				System.out.println("Игрок " + playerOne.getName() + " победил");
 				break;
 			}
 
 			System.out.println("Игрок " + playerTwo.getName() + " вводит число: ");
 			playerTwo.setNumber(scan.nextInt());
-			guessNumber.checkNumber(guessNumber.getCompNumber(), playerTwo.getNumber());
+			guessNumber.checkNumber(guessNumber.getCompNumber(), playerTwo.getNumber(), playerTwo.getName());
 			if(guessNumber.getCompNumber() == playerTwo.getNumber()) {
-				System.out.println("Игрок " + playerTwo.getName() + " победил");
 				break;
 			}
 
