@@ -4,8 +4,8 @@ import java.util.Random;
 public class GuessNumber {
 	Random random = new Random();
 	private int compNumber = random.nextInt(100);
-	Player playerOne;
-	Player playerTwo;
+	private Player playerOne;
+	private Player playerTwo;
 
 	public GuessNumber(Player playerOne, Player playerTwo) {
 		this.playerOne = playerOne;
