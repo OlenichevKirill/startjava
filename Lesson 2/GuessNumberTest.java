@@ -13,18 +13,10 @@ public class GuessNumberTest {
 		System.out.println("Введите имя второго игрока: ");
 		Player playerTwo = new Player(scan.next());
 
-		GuessNumber guessNumber = new GuessNumber(playerOne.getName(),playerOne.getNumber(),playerTwo.getName(), playerTwo.getNumber());
+		GuessNumber guessNumber = new GuessNumber(playerOne, playerTwo);
 		
 		do {
-			guessNumber.checkPlayerOneNumber();
-			if(guessNumber.getCompNumber() == guessNumber.getPlayerOneNumber()) {
-				break;
-			}
-			
-			guessNumber.checkPlayerTwoNumber();
-			if(guessNumber.getCompNumber() == guessNumber.getPlayerTwoNumber()) {
-				break;
-			}
+			guessNumber.startGame();
 
 			do {
 				System.out.println("Хотите продолжить? [yes/no]:");
