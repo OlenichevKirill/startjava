@@ -1,9 +1,10 @@
 import java.util.Scanner;
-import java.util.Random;
+
 
 public class GuessNumberTest {
 
 	public static void main(String[] args) {
+		String answerYesNo;
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Введите имя первого игрока: ");
@@ -12,9 +13,23 @@ public class GuessNumberTest {
 		System.out.println("Введите имя второго игрока: ");
 		Player playerTwo = new Player(scan.next());
 
-		Random random = new Random();
-		GuessNumber guessNumber = new GuessNumber(random.nextInt(100));
+		GuessNumber guessNumber = new GuessNumber(playerOne.getName(),playerOne.getNumber(),playerTwo.getName(), playerTwo.getNumber());
+		System.out.println(guessNumber.getCompNumber());
+		do {
+			guessNumber.checkPlayerOneNumber();
+			if(guessNumber.getCompNumber() == guessNumber.getPlayerOneNumber()) {
+				break;
+			}
+			
+			guessNumber.checkPlayerTwoNumber();
+			if(guessNumber.getCompNumber() == guessNumber.getPlayerTwoNumber()) {
+				break;
+			}
 
-		guessNumber.checkNumber(guessNumber.getCompNumber(), playerOne.getName(), playerOne.getNumber(), playerTwo.getName(), playerTwo.getNumber());
+			do {
+				System.out.println("Хотите продолжить? [yes/no]:");
+				answerYesNo = scan.next();
+			} while(!answerYesNo.equals("yes") && !answerYesNo.equals("no"));
+		} while(answerYesNo.equals("yes"));
 	}
 }
