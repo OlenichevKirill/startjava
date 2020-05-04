@@ -55,7 +55,6 @@ public class GuessNumber {
 		} else {
 			System.out.println("Число угадано.");
 			System.out.println("Игрок " + getPlayerOne() + " победил");
-			//break;
 		}
 	}
 	public void checkPlayerTwoNumber() {
@@ -71,7 +70,6 @@ public class GuessNumber {
 		} else {
 			System.out.println("Число угадано.");
 			System.out.println("Игрок " + getPlayerTwo() + " победил");
-			//break;
 		}
 	}
 }

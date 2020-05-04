@@ -14,7 +14,7 @@ public class GuessNumberTest {
 		Player playerTwo = new Player(scan.next());
 
 		GuessNumber guessNumber = new GuessNumber(playerOne.getName(),playerOne.getNumber(),playerTwo.getName(), playerTwo.getNumber());
-		System.out.println(guessNumber.getCompNumber());
+		
 		do {
 			guessNumber.checkPlayerOneNumber();
 			if(guessNumber.getCompNumber() == guessNumber.getPlayerOneNumber()) {
