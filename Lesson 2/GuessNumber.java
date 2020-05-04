@@ -16,9 +16,9 @@ public class GuessNumber {
 		return compNumber;
 	}
 
-	public void playerNumber(Player player, String name) {
+	public void enterPlayerNumber(Player player) {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Игрок " + name + " вводит число: ");
+		System.out.println("Игрок " + player.getName() + " вводит число: ");
 		player.setNumber(scan.nextInt());
 	}
 
@@ -36,12 +36,12 @@ public class GuessNumber {
 
 	public void startGame() {
 		do {
-			playerNumber(playerOne, playerOne.getName());
+			enterPlayerNumber(playerOne);
 			checkNumber(playerOne.getName(), playerOne.getNumber());
 			if(playerOne.getNumber() == getCompNumber()) {
 				break;
 			}
-			playerNumber(playerTwo, playerTwo.getName());
+			enterPlayerNumber(playerTwo);
 			checkNumber(playerTwo.getName(), playerTwo.getNumber());
 			if(playerTwo.getNumber() == getCompNumber()) {
 				break;
