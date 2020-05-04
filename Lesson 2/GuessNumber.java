@@ -13,7 +13,7 @@ public class GuessNumber {
 	}
 
 	public void setCompNumber() {
-		compNumber =  random.nextInt(100);
+		compNumber = random.nextInt(100);
 	}
 
 	public int getCompNumber() {
