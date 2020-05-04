@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class GuessNumber {
 	Random random = new Random();
-	private int compNumber = random.nextInt(100);
+	private int compNumber;
 	private Player playerOne;
 	private Player playerTwo;
 
@@ -12,40 +12,45 @@ public class GuessNumber {
 		this.playerTwo = playerTwo;
 	}
 
+	public void setCompNumber() {
+		compNumber =  random.nextInt(100);
+	}
+
 	public int getCompNumber() {
 		return compNumber;
 	}
 
-	public void enterPlayerNumber(Player player) {
+	public void startGame() {
+		setCompNumber();
+		do {
+			enterNumber(playerOne);
+			if(checkNumber(playerOne.getName(), playerOne.getNumber())) {
+				break;
+			}
+			enterNumber(playerTwo);
+			if(checkNumber(playerTwo.getName(), playerTwo.getNumber())) {
+				break;
+			}
+		} while(true);
+	}
+
+	public void enterNumber(Player player) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Игрок " + player.getName() + " вводит число: ");
 		player.setNumber(scan.nextInt());
 	}
 
-	public void checkNumber(String player, int number) {
+	public boolean checkNumber(String name, int number) {
 		if(getCompNumber() < number) {
-				System.out.println("Число больше загаданного компьютером.");
-			} else if(getCompNumber() > number) {
-				System.out.println("Число меньше загаданного компьютером.");
-			} else {
-				System.out.println("Число угадано.");
-				System.out.println("Игрок " + player + " победил");
-			}
-	}
-
-
-	public void startGame() {
-		do {
-			enterPlayerNumber(playerOne);
-			checkNumber(playerOne.getName(), playerOne.getNumber());
-			if(playerOne.getNumber() == getCompNumber()) {
-				break;
-			}
-			enterPlayerNumber(playerTwo);
-			checkNumber(playerTwo.getName(), playerTwo.getNumber());
-			if(playerTwo.getNumber() == getCompNumber()) {
-				break;
-			}
-		} while(getCompNumber() != playerOne.getNumber() && getCompNumber() != playerTwo.getNumber());	
+			System.out.println("Число больше загаданного компьютером.");
+			return false;
+		} else if(getCompNumber() > number) {
+			System.out.println("Число меньше загаданного компьютером.");
+			return false;
+		} else {
+			System.out.println("Число угадано.");
+			System.out.println("Игрок " + name + " победил");
+			return true;
+		}
 	}
 }
