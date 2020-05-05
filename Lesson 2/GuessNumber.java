@@ -2,7 +2,6 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class GuessNumber {
-	Random random = new Random();
 	private int compNumber;
 	private Player playerOne;
 	private Player playerTwo;
@@ -12,16 +11,9 @@ public class GuessNumber {
 		this.playerTwo = playerTwo;
 	}
 
-	public void setCompNumber() {
-		compNumber = random.nextInt(100);
-	}
-
-	public int getCompNumber() {
-		return compNumber;
-	}
-
 	public void startGame() {
-		setCompNumber();
+		Random random = new Random();
+		compNumber = random.nextInt(101);
 		do {
 			enterNumber(playerOne);
 			if(checkNumber(playerOne.getName(), playerOne.getNumber())) {
@@ -34,18 +26,19 @@ public class GuessNumber {
 		} while(true);
 	}
 
-	public void enterNumber(Player player) {
+	private void enterNumber(Player player) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Игрок " + player.getName() + " вводит число: ");
 		player.setNumber(scan.nextInt());
 	}
 
-	public boolean checkNumber(String name, int number) {
-		if(getCompNumber() < number) {
-			System.out.println("Число больше загаданного компьютером.");
-			return false;
-		} else if(getCompNumber() > number) {
-			System.out.println("Число меньше загаданного компьютером.");
+	private boolean checkNumber(String name, int number) {
+		if(compNumber < number || compNumber > number) {
+			if(compNumber < number) {
+				System.out.println("Число больше загаданного компьютером.");
+			} else if(compNumber > number) {
+				System.out.println("Число меньше загаданного компьютером.");
+			}
 			return false;
 		} else {
 			System.out.println("Число угадано.");
