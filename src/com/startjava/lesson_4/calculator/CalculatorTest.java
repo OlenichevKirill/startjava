@@ -7,17 +7,15 @@ public class CalculatorTest {
 	public static void main(String[] args) {
 		Calculator calc = new Calculator();
 		String answerYesNo;
-		String[] text = new String[3];
-
+		String[] mathExpression = new String[3];
+		Scanner scan = new Scanner(System.in);
 		do {
-			Scanner scan = new Scanner(System.in);
-
 			System.out.println("Введите математическое выражение: ");
-			text = scan.nextLine().split(" ");
+			mathExpression = new Scanner(System.in).nextLine().split(" ");
 
-			calc.setFirstNumber(Integer.parseInt(text[0]));
-			calc.setSecondNumber(Integer.parseInt(text[2]));
-			calc.setOperation(text[1].charAt(0));
+			calc.setFirstNumber(Integer.parseInt(mathExpression[0]));
+			calc.setSecondNumber(Integer.parseInt(mathExpression[2]));
+			calc.setOperation(mathExpression[1].charAt(0));
 
 			calc.calculate();
 
