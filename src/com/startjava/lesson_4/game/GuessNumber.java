@@ -64,7 +64,7 @@ public class GuessNumber {
 			} else if(compNumber > number && counter < 10) {
 				System.out.println("Число меньше загаданного компьютером.");
 				player.setArray(counter-1, number);
-			} else if((compNumber < number && counter == 10) || (compNumber > number && counter == 10)) {
+			} else {
 				System.out.println("У " + name + " закончились попытки");
 				player.setArray(counter-1, number);
 			}
