@@ -2,9 +2,8 @@ package com.startjava.lesson_4.game;
 
 public class Player {
 	private String name;
-	private int number;
 	private int[] enteredNums = new int[10];
-	private int couter;
+	private int attempt;
 
 	public Player(String name) {
 		this.name = name;
@@ -14,31 +13,27 @@ public class Player {
 		return name;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
-	public int getNumber() {
-		return number;
-	}
-
-	public void setEnteredNums(int i, int res) {
-		this.enteredNums[i] = res;
+	public void setEnteredNum(int i, int num) {
+		enteredNums[i] = num;
 	}
 
 	public int[] getEnteredNums() {
 		return enteredNums;
 	}
 
-	public void setCouter() {
-		this.couter++;
+	public int getEnteredNum(int i) {
+		return enteredNums[i];
 	}
 
-	public int getCouter() {
-		return couter;
+	public void setAttempt() {
+		attempt++;
 	}
 
-	public void zeroingCouter() {
-		this.couter = 0;
+	public int getAttempt() {
+		return attempt;
+	}
+
+	public void zeroingAttempt() {
+		attempt = 0;
 	}
 }
