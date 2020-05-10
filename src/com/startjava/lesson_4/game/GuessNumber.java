@@ -8,8 +8,7 @@ public class GuessNumber {
 	private int compNumber;
 	private Player playerOne;
 	private Player playerTwo;
-	private int counterOne;
-	private int counterTwo;
+
 	public GuessNumber(Player playerOne, Player playerTwo) {
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
@@ -19,67 +18,59 @@ public class GuessNumber {
 		Random random = new Random();
 		compNumber = random.nextInt(101);
 		System.out.println("У вас 10 попыток");
-		counterOne = 0;
-		counterTwo = 0;
+		playerOne.zeroingCouter();
+		playerTwo.zeroingCouter();
 		zeroingArray(playerOne);
 		zeroingArray(playerTwo);
 
 		do {
 			enterNumber(playerOne);
-			counterOne++;
-			if(checkNumber(playerOne, playerOne.getName(), playerOne.getNumber(), counterOne)) {
+			if(checkNumber(playerOne)) {
 				break;
 			}
 
 			enterNumber(playerTwo);
-			counterTwo++;
-			if(checkNumber(playerTwo, playerTwo.getName(), playerTwo.getNumber(), counterTwo)) {
+			if(checkNumber(playerTwo)) {
 				break;
 			}
-
-			if(counterOne == 10 && counterTwo == 10) {
-				break;
-			}
-		} while(true);
-		bringOutArray(playerOne,counterOne);
-		bringOutArray(playerTwo,counterTwo);
+		} while(playerOne.getCouter() < 10 && playerTwo.getCouter() < 10);
+		showEnteredNums(playerOne);
+		showEnteredNums(playerTwo);
 	}
 
 	private void zeroingArray(Player player) {
-		Arrays.copyOf(player.getArray(),10);
-		Arrays.fill(player.getArray(),0);
+		Arrays.copyOf(player.getEnteredNums(),10);
+		Arrays.fill(player.getEnteredNums(),0);
 	}
 
 	private void enterNumber(Player player) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Игрок " + player.getName() + " вводит число: ");
 		player.setNumber(scan.nextInt());
+		player.setCouter();
+		player.setEnteredNums(player.getCouter() - 1, player.getNumber());
 	}
 
-	private boolean checkNumber(Player player, String name, int number, int counter) {
-		if((compNumber < number && counter <= 10) || (compNumber > number && counter <= 10)) {
-			if(compNumber < number && counter < 10) {
+	private boolean checkNumber(Player player) {
+		if((compNumber < player.getNumber() && player.getCouter() <= 10) || (compNumber > player.getNumber() && player.getCouter() <= 10)) {
+			if(compNumber < player.getNumber() && player.getCouter() < 10) {
 				System.out.println("Число больше загаданного компьютером.");
-				player.setArray(counter-1, number);
-			} else if(compNumber > number && counter < 10) {
+			} else if(compNumber > player.getNumber() && player.getCouter() < 10) {
 				System.out.println("Число меньше загаданного компьютером.");
-				player.setArray(counter-1, number);
 			} else {
-				System.out.println("У " + name + " закончились попытки");
-				player.setArray(counter-1, number);
+				System.out.println("У " + player.getName() + " закончились попытки");
 			}
 			return false;
 		} else {
 			System.out.println("Число угадано.");
-			player.setArray(counter-1, number);
-			System.out.println("Игрок " + name + " угадал число " + number + " с " + counter + " попытки");
+			System.out.println("Игрок " + player.getName() + " угадал число " + player.getNumber() + " с " + player.getCouter() + " попытки");
 			return true;
 		}
 	}
 
-	private void bringOutArray(Player player, int counter) {
+	private void showEnteredNums(Player player) {
 		System.out.print("Введенные игроком " + player.getName() +" числа: ");
-		for (int res: Arrays.copyOf(player.getArray(), counter)) {
+		for (int res: Arrays.copyOf(player.getEnteredNums(), player.getCouter())) {
 			System.out.print(res + " ");
 		}
 		System.out.println("");
