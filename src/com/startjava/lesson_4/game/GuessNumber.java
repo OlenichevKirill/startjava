@@ -42,7 +42,7 @@ public class GuessNumber {
 
 	private void clearEnteredNums(Player player) {
 		if(player.getAttempt() > 0) {
-			Arrays.fill(player.getEnteredNums(), 0, player.getAttempt() ,0);
+			Arrays.fill(player.getEnteredNums(), 0, player.getAttempt(), 0);
 		}
 	}
 
